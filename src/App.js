@@ -9,10 +9,15 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import api from "./services/api";
 
 export default function App() {
   async function handleLikeRepository(id) {
-    // Implement "Like Repository" functionality
+    await api.post(`repositories/:${repositories.id}/like`, (request, response)=>{
+      if({id} === repositories.id){
+
+      }
+    })
   }
 
   return (
@@ -35,15 +40,17 @@ export default function App() {
             <Text
               style={styles.likeText}
               // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
-              testID={`repository-likes-1`}
+              testID={`repository-likes-${repository.id}`}
             >
               3 curtidas
             </Text>
           </View>
 
           <TouchableOpacity
+
+          //map
             style={styles.button}
-            onPress={() => handleLikeRepository(1)}
+            onPress={() => handleLikeRepository({1})}
             // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
             testID={`like-button-1`}
           >
